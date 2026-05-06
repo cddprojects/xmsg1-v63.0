@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Match iNet — Singapore's career bridge for remote, WFH and flexible part-time roles. Open to Singapore Citizens and PRs." />
+  <title>Match iNet — Remote & WFH Jobs | Singapore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Tokens ───────────────────────────────────────────────── */
+    :root {
+      --bg:          #f7f9fc;
+      --surface:     #ffffff;
+      --border:      #e4e9f2;
+      --text:        #0d1b35;
+      --muted:       #5a6a85;
+      --accent:      #1a56db;
+      --accent-dk:   #1342b0;
+      --accent-lt:   #dbeafe;
+      --teal:        #0d9488;
+      --teal-lt:     #ccfbf1;
+      --amber:       #d97706;
+      --amber-lt:    #fef3c7;
+      --rose:        #e11d48;
+      --radius:      16px;
+      --radius-sm:   10px;
+      --max:         1160px;
+      --sh-sm:       0 1px 3px rgba(13,27,53,.06),0 4px 12px rgba(13,27,53,.07);
+      --sh:          0 4px 6px rgba(13,27,53,.05),0 16px 40px rgba(13,27,53,.10);
+      --sh-lg:       0 8px 16px rgba(13,27,53,.06),0 32px 64px rgba(13,27,53,.14);
+    }
+
+    /* ─── Reset ────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ─── Layout helpers ───────────────────────────────────────── */
+    .wrap {
+      width: min(100% - 2.5rem, var(--max));
+      margin-inline: auto;
+    }
+    .section { padding: clamp(3.5rem,7vw,5.5rem) 0; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: .45rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent);
+      background: var(--accent-lt); border-radius: 999px;
+      padding: .3rem .85rem; margin-bottom: 1rem; border: 1px solid #bfdbfe;
+    }
+    .section-title {
+      font-family: "Sora", sans-serif;
+      font-size: clamp(1.75rem, 3.8vw, 2.5rem);
+      font-weight: 800; line-height: 1.15; letter-spacing: -.03em;
+      margin: 0 0 .65rem;
+    }
+    .section-sub {
+      color: var(--muted); font-size: clamp(.95rem,1.8vw,1.05rem);
+      max-width: 54ch; margin: 0 0 2.5rem;
+    }
+    .grid-2 {
+      display: grid; gap: clamp(2rem,4vw,3rem); align-items: center;
+    }
+    @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+
+    /* ─── Buttons ──────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: .45rem; padding: .8rem 1.35rem; border-radius: 999px;
+      font-family: inherit; font-weight: 600; font-size: .95rem;
+      border: none; cursor: pointer;
+      transition: transform .15s, box-shadow .15s, background .15s;
+      text-decoration: none !important;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #1a56db, #1342b0);
+      color: #fff; box-shadow: 0 4px 16px rgba(26,86,219,.32);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,86,219,.38); }
+    .btn-outline {
+      background: var(--surface); color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover { border-color: #93c5fd; background: var(--accent-lt); }
+    .btn-sm { padding: .6rem 1.1rem; font-size: .875rem; }
+    .btn-full { width: 100%; }
+    .btn-nav {
+      background: #1a56db; color: #fff !important;
+      padding: .65rem 1.4rem; font-size: .92rem; font-weight: 700;
+      border-radius: 999px; letter-spacing: .01em;
+      box-shadow: 0 2px 8px rgba(26,86,219,.35), 0 0 0 2px rgba(26,86,219,.12);
+      transition: background .15s, transform .15s, box-shadow .15s;
+    }
+    .btn-nav:hover { background: #1342b0; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(26,86,219,.45); text-decoration: none; }
+
+    /* ─── Header ───────────────────────────────────────────────── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap; padding: .9rem 0;
+    }
+    .logo {
+      font-family: "Sora", sans-serif; font-weight: 800;
+      font-size: 1.25rem; letter-spacing: -.03em; color: var(--text);
+      display: flex; align-items: center; gap: .45rem;
+    }
+    .logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    .nav-links {
+      display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: var(--muted); font-size: .9rem; font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* ─── Hero ─────────────────────────────────────────────────── */
+    .hero { padding: clamp(3rem,7vw,5.5rem) 0 clamp(3.5rem,8vw,6.5rem); overflow: hidden; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--accent-lt); color: var(--accent);
+      border: 1px solid #bfdbfe; border-radius: 999px;
+      font-size: .8rem; font-weight: 600; padding: .4rem 1rem;
+      margin-bottom: 1.35rem;
+    }
+    .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; }
+    h1 {
+      font-family: "Sora", sans-serif; font-weight: 800;
+      font-size: clamp(2.1rem,5.5vw,3.6rem); line-height: 1.1;
+      letter-spacing: -.04em; margin: 0 0 1.1rem;
+    }
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(120deg, var(--accent), #60a5fa);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-lead {
+      font-size: clamp(1rem,2vw,1.1rem); color: var(--muted);
+      max-width: 38ch; margin: 0 0 2rem; line-height: 1.7;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .hero-trust {
+      display: flex; align-items: center; gap: .75rem;
+      margin-top: 1.75rem; font-size: .85rem; color: var(--muted);
+    }
+    .avatars {
+      display: flex;
+    }
+    .avatars img {
+      width: 32px; height: 32px; border-radius: 50%; border: 2px solid #fff;
+      object-fit: cover; margin-left: -8px;
+    }
+    .avatars img:first-child { margin-left: 0; }
+    .hero-img-wrap {
+      position: relative;
+    }
+    .hero-img-wrap img {
+      border-radius: 24px; width: 100%; aspect-ratio: 4/3;
+      object-fit: cover; box-shadow: var(--sh-lg);
+    }
+    .hero-float {
+      position: absolute; background: var(--surface);
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: .7rem 1rem; box-shadow: var(--sh);
+      font-size: .82rem; font-weight: 600;
+    }
+    .hero-float-1 { bottom: -1.25rem; left: -1rem; }
+    .hero-float-2 { top: -1rem; right: -1rem; }
+    .hero-float .num { font-family: "Sora",sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--accent); }
+    .hero-float .lbl { color: var(--muted); font-weight: 500; font-size: .78rem; }
+
+    /* ─── Stats band ───────────────────────────────────────────── */
+    .stats-band {
+      background: var(--text);
+      padding: clamp(2.5rem,5vw,4rem) 0;
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    @media (min-width: 640px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: "Sora", sans-serif; font-size: clamp(2rem,4.5vw,2.75rem);
+      font-weight: 800; color: #fff; line-height: 1;
+    }
+    .stat-num .plus { color: #60a5fa; }
+    .stat-desc { color: #94a3b8; font-size: .85rem; margin-top: .4rem; }
+    .stat-tag {
+      display: inline-block; background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12); border-radius: 999px;
+      font-size: .7rem; padding: .2rem .6rem; color: #60a5fa;
+      font-weight: 600; text-transform: uppercase; letter-spacing: .05em;
+      margin-bottom: .5rem;
+    }
+
+    /* ─── Services ─────────────────────────────────────────────── */
+    .services-grid {
+      display: grid; gap: 1.25rem;
+    }
+    @media (min-width: 640px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+    .svc-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+      box-shadow: var(--sh-sm); transition: box-shadow .2s, transform .2s;
+    }
+    .svc-card:hover { box-shadow: var(--sh); transform: translateY(-3px); }
+    .svc-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.35rem; margin-bottom: 1.1rem;
+    }
+    .svc-icon-blue { background: var(--accent-lt); }
+    .svc-icon-teal { background: var(--teal-lt); }
+    .svc-icon-amber { background: var(--amber-lt); }
+    .svc-card h3 { margin: 0 0 .5rem; font-size: 1.05rem; font-weight: 700; }
+    .svc-card p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.65; }
+
+    /* ─── About / team ─────────────────────────────────────────── */
+    .about-section { background: var(--surface); border-block: 1px solid var(--border); }
+    .about-img { border-radius: 20px; box-shadow: var(--sh-lg); width: 100%; object-fit: cover; aspect-ratio: 4/3; }
+    .check-list { list-style: none; padding: 0; margin: 0 0 2rem; }
+    .check-list { list-style: none; padding: 0; margin: 0 0 2rem; }
+    .check-list li {
+      display: flex; align-items: flex-start; gap: .7rem;
+      padding: .75rem 0; border-bottom: 1px solid var(--border);
+    }
+    .check-list li:last-child { border-bottom: none; }
+    .check-list-icon {
+      flex-shrink: 0; width: 22px; height: 22px; min-width: 22px;
+      border-radius: 50%; background: var(--accent-lt);
+      color: var(--accent); font-weight: 700; font-size: .78rem;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: .18rem;
+    }
+    .check-list-text { flex: 1; min-width: 0; font-size: .93rem; color: var(--muted); line-height: 1.6; }
+    .check-list-text strong { color: var(--text); display: block; font-size: .93rem; font-weight: 700; margin-bottom: .18rem; }
+
+    /* ─── Job cards ─────────────────────────────────────────────── */
+    .roles-section { background: var(--bg); }
+    .job-grid {
+      display: grid; gap: 1.5rem;
+    }
+    @media (min-width: 768px) { .job-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1060px) { .job-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .job-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      display: flex; flex-direction: column; gap: 0;
+      box-shadow: var(--sh-sm); transition: box-shadow .2s, transform .2s;
+      position: relative; overflow: hidden;
+    }
+    .job-card::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--accent), #60a5fa);
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .job-card.teal::before { background: linear-gradient(90deg, var(--teal), #34d399); }
+    .job-card.amber::before { background: linear-gradient(90deg, var(--amber), #fbbf24); }
+    .job-card:hover { box-shadow: var(--sh); transform: translateY(-3px); }
+
+    .job-header { margin-bottom: 1rem; }
+    .job-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .65rem; }
+    .tag {
+      font-size: .7rem; font-weight: 700; letter-spacing: .04em;
+      text-transform: uppercase; padding: .25rem .6rem;
+      border-radius: 6px; border: 1px solid transparent;
+    }
+    .tag-remote { background: var(--accent-lt); color: var(--accent); border-color: #bfdbfe; }
+    .tag-hybrid { background: var(--teal-lt); color: var(--teal); border-color: #99f6e4; }
+    .tag-flex   { background: var(--amber-lt); color: var(--amber); border-color: #fde68a; }
+
+    .job-card h3 {
+      font-family: "Sora", sans-serif; font-weight: 700;
+      font-size: 1.1rem; margin: 0 0 .35rem; line-height: 1.25;
+    }
+    .job-salary {
+      font-size: .97rem; font-weight: 700; color: var(--accent);
+      margin: 0 0 .2rem; white-space: normal; line-height: 1.4;
+    }
+    .job-salary-note { font-size: .78rem; color: var(--muted); margin: 0 0 1.1rem; }
+
+    .job-block { margin-bottom: 1rem; }
+    .job-block-label {
+      font-size: .72rem; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: .45rem;
+    }
+    .job-block ul {
+      margin: 0; padding-left: 1.1rem;
+      color: var(--muted); font-size: .875rem; line-height: 1.6;
+    }
+    .job-block ul li { margin-bottom: .25rem; }
+    .job-block ul li:last-child { margin-bottom: 0; }
+
+    .job-perks {
+      display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1.25rem;
+    }
+    .perk {
+      font-size: .75rem; background: #f0f4ff; color: #3b5ec6;
+      border-radius: 6px; padding: .25rem .55rem; font-weight: 500;
+    }
+
+    .job-footer { margin-top: auto; }
+
+    /* ─── Testimonials ─────────────────────────────────────────── */
+    .testimonials-section { background: var(--surface); border-block: 1px solid var(--border); }
+    .testi-grid {
+      display: grid; gap: 1.5rem;
+    }
+    @media (min-width: 640px) { .testi-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .testi-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      box-shadow: var(--sh-sm); transition: box-shadow .2s;
+    }
+    .testi-card:hover { box-shadow: var(--sh); }
+    .testi-quote {
+      font-size: .95rem; color: var(--text); line-height: 1.7;
+      font-style: italic; flex: 1;
+    }
+    .testi-quote::before { content: "\201C"; color: var(--accent); font-size: 1.4rem; font-style: normal; line-height: 0; vertical-align: -6px; margin-right: 2px; }
+    .testi-profile { display: flex; align-items: center; gap: .75rem; }
+    .testi-profile img {
+      width: 46px; height: 46px; border-radius: 50%;
+      object-fit: cover; flex-shrink: 0;
+      border: 2px solid var(--border);
+    }
+    .testi-name { font-weight: 700; font-size: .9rem; margin: 0 0 .15rem; }
+    .testi-role { font-size: .8rem; color: var(--muted); margin: 0; }
+    .stars { color: #f59e0b; font-size: .85rem; margin-bottom: .1rem; }
+
+    /* ─── Process ──────────────────────────────────────────────── */
+    .process-section { background: var(--bg); }
+    .process-grid {
+      display: grid; gap: 1.5rem;
+    }
+    @media (min-width: 768px) { .process-grid { grid-template-columns: repeat(4, 1fr); } }
+    .process-item {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      box-shadow: var(--sh-sm); position: relative;
+    }
+    .process-num {
+      font-family: "Sora", sans-serif; font-size: 2.5rem; font-weight: 800;
+      color: var(--accent-lt); line-height: 1; margin-bottom: .65rem;
+      letter-spacing: -.04em;
+    }
+    .process-item h3 { margin: 0 0 .4rem; font-weight: 700; font-size: 1rem; }
+    .process-item p { margin: 0; font-size: .875rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── Contact ──────────────────────────────────────────────── */
+    .contact-section { background: var(--surface); border-top: 1px solid var(--border); }
+    .contact-layout {
+      display: grid; gap: 2.5rem; align-items: start;
+    }
+    @media (min-width: 900px) { .contact-layout { grid-template-columns: 1.2fr .8fr; } }
+
+    .form-panel {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 4px); padding: clamp(1.5rem,3vw,2rem);
+      box-shadow: var(--sh-sm);
+    }
+    .form-panel h3 {
+      font-family: "Sora", sans-serif; font-size: 1.3rem; font-weight: 700;
+      margin: 0 0 .4rem;
+    }
+    .form-panel > p { margin: 0 0 1.35rem; color: var(--muted); font-size: .92rem; }
+
+    .embed-shell {
+      border: 2px dashed #cbd5e1; border-radius: var(--radius);
+      background: var(--surface);
+      height: auto;
+      min-height: unset;
+      overflow: visible;
+    }
+    .form-embed-wrapper {
+      width: 100%;
+      max-width: 100%;
+      padding: 1.25rem;
+      height: auto;
+      min-height: unset;
+      overflow: visible;
+      -webkit-overflow-scrolling: touch;
+    }
+    .form-embed-wrapper > div[data-cddform] {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      min-height: unset;
+      overflow: visible;
+    }
+    .form-embed-wrapper iframe {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: 760px;
+      min-height: 760px;
+      overflow: hidden;
+      border: 0;
+    }
+
+    @media (max-width: 640px) {
+      .form-embed-wrapper iframe {
+        height: 980px;
+        min-height: 980px;
+      }
+    }
+
+    .contact-aside { display: flex; flex-direction: column; gap: 1.25rem; }
+    .cta-card {
+      background: linear-gradient(145deg, #dbeafe, #eff6ff);
+      border: 1px solid #bfdbfe; border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .cta-card h3 { margin: 0 0 .4rem; font-size: 1.05rem; font-weight: 700; }
+    .cta-card p { margin: 0 0 1rem; font-size: .9rem; color: var(--muted); }
+    .aside-info {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem;
+      font-size: .88rem;
+    }
+    .aside-info h4 { margin: 0 0 .75rem; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+    .aside-info address { font-style: normal; color: var(--muted); line-height: 1.75; }
+    .aside-info a { color: var(--accent); font-weight: 600; }
+
+    /* ─── Footer ───────────────────────────────────────────────── */
+    footer {
+      background: var(--text); color: #94a3b8;
+      padding: clamp(2.5rem,5vw,4rem) 0 2rem;
+    }
+    .footer-grid { display: grid; gap: 2rem; }
+    @media (min-width: 640px)  { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1.1fr 1.3fr; column-gap: 3.5rem; } }
+    .footer-col-contact { text-align: left; display: flex; flex-direction: column; align-items: flex-start; }
+    @media (min-width: 1024px) { .footer-col-contact { padding-left: 30px; } }
+    .footer-col-contact address { font-style: normal; font-size: .9rem; line-height: 1.85; color: #94a3b8; }
+    .footer-col-contact a { color: #93c5fd; }
+    .footer-col-contact a:hover { color: #fff; text-decoration: none; }
+
+    .footer-links-col h4 { color: #f1f5f9; font-size: .82rem; text-transform: uppercase; letter-spacing: .07em; margin: 0 0 .85rem; }
+    .footer-links-col ul { list-style: none; padding: 0; margin: 0; }
+    .footer-links-col li { margin-bottom: .5rem; font-size: .9rem; white-space: nowrap; }
+    .footer-links-col a { color: #94a3b8; }
+    .footer-links-col a:hover { color: #fff; text-decoration: none; }
+    footer .logo { color: #fff; margin-bottom: .65rem; }
+    footer .logo-dot { background: #60a5fa; }
+    footer p { margin: 0; font-size: .9rem; line-height: 1.7; max-width: 38ch; }
+    footer h4 { color: #f1f5f9; font-size: .82rem; text-transform: uppercase; letter-spacing: .07em; margin: 0 0 .75rem; }
+    footer address { font-style: normal; font-size: .9rem; line-height: 1.75; }
+    footer a { color: #93c5fd; }
+    footer a:hover { color: #fff; }
+    .footer-bottom {
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      font-size: .82rem;
+    }
+
+    /* ─── Mission / Why section ───────────────────────────────── */
+    .mission-section { background: var(--surface); border-top: 1px solid var(--border); }
+    .mission-intro { text-align: center; max-width: 64ch; margin-inline: auto; }
+    .section-head { text-align: center; max-width: 64ch; margin-inline: auto; margin-bottom: 2.5rem; }
+    .section-head .section-sub { margin-inline: auto; }
+    /* Allow heading to breathe on sections where we want single-line title */
+    .section-head--wide { max-width: none; }
+    @media (min-width: 1024px) {
+      .section-head--wide .section-title { white-space: nowrap; }
+    }
+    .feature-grid { display: grid; gap: 1.25rem; }
+    @media (min-width: 640px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .feature-grid { grid-template-columns: repeat(3, 1fr); } }
+    .feature-card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.5rem; box-shadow: var(--sh-sm); transition: box-shadow .2s, transform .2s;
+    }
+    .feature-card:hover { box-shadow: var(--sh); transform: translateY(-2px); }
+    .feature-icon { font-size: 1.85rem; margin-bottom: .85rem; }
+    .feature-card h3 { margin: 0 0 .45rem; font-size: 1rem; font-weight: 700; }
+    .feature-card p { margin: 0; font-size: .9rem; color: var(--muted); line-height: 1.65; }
+
+    /* ─── Footer legal links ───────────────────────────────────── */
+    .footer-bottom { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: space-between; align-items: center; }
+    .footer-legal { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    .footer-legal a { color: #94a3b8; font-size: .82rem; }
+    .footer-legal a:hover { color: #fff; text-decoration: none; }
+
+    /* ─── Divider / misc ───────────────────────────────────────── */
+    .divider { height: 1px; background: var(--border); margin: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="wrap nav">
+      <a href="#" class="logo">
+        <div class="logo-dot"></div>
+        Match iNet
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#services">Services</a>
+        <a href="#roles">Open Roles</a>
+        <a href="#testimonials">Stories</a>
+        <a href="#contact">Apply</a>
+        <a href="#contact" class="btn-nav">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="grid-2">
+          <div>
+            <div class="hero-badge">
+              <span></span> Now matching remote roles in Singapore
+            </div>
+            <h1>Work from anywhere.<br><em>Land your next role</em><br>right here.</h1>
+            <p class="hero-lead">
+              Match iNet bridges the gap between ambitious Singaporeans and real remote, part-time and flexible careers. No experience needed to start — just bring the drive.
+            </p>
+            <div class="hero-actions">
+              <a href="#roles" class="btn btn-primary">Browse open roles</a>
+              <a href="#contact" class="btn btn-outline">Submit your CV</a>
+            </div>
+            <div class="hero-trust">
+              <div class="avatars">
+                <img src="assets/testimonial-1.jpg" alt="Candidate" />
+                <img src="assets/testimonial-2.jpg" alt="Candidate" />
+                <img src="assets/testimonial-3.jpg" alt="Candidate" />
+              </div>
+              <span>Trusted by <strong>200+ Singaporeans</strong> in their flexible career journey</span>
+            </div>
+          </div>
+          <div class="hero-img-wrap">
+            <img src="assets/hero-wfh.jpg" alt="Singaporean professional working from home" />
+            <div class="hero-float hero-float-1">
+              <div class="num">3 in 5</div>
+              <div class="lbl">SG employers now offer hybrid</div>
+            </div>
+            <div class="hero-float hero-float-2">
+              <div class="num">67%</div>
+              <div class="lbl">want more WFH flexibility</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAND -->
+    <div class="stats-band">
+      <div class="wrap">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-tag">MOM 2024</div>
+            <div class="stat-num"><span class="counter" data-target="67">0</span><span class="plus">%</span></div>
+            <div class="stat-desc">of SG employees want more WFH flexibility</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-tag">LinkedIn SG</div>
+            <div class="stat-num"><span class="counter" data-target="3">0</span><span class="plus">×</span></div>
+            <div class="stat-desc">surge in remote job listings since 2022</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-tag">IMDA 2024</div>
+            <div class="stat-num"><span class="counter" data-target="58">0</span><span class="plus">%</span></div>
+            <div class="stat-desc">of SG tech roles now fully remote or hybrid</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-tag">Our track record</div>
+            <div class="stat-num"><span class="counter" data-target="200">0</span><span class="plus">+</span></div>
+            <div class="stat-desc">Singaporeans placed in flexible roles</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOB CARDS — moved up: primary content visitors come for -->
+    <section id="roles" class="section roles-section">
+      <div class="wrap">
+        <div class="section-head section-head--wide">
+          <span class="section-label">Open roles</span>
+          <h2 class="section-title">Part-time &amp; flexible roles for every stage</h2>
+          <p class="section-sub" style="max-width: 56ch;">Entry-level and mid-level openings suited for WFH and flexible schedules. Hourly or part-time rates shown; final offer depends on employer and agreed working hours. Open to Singapore Citizens and PRs only.</p>
+        </div>
+        <div class="job-grid">
+
+          <!-- 1 -->
+          <article class="job-card">
+            <div class="job-header">
+              <div class="job-tags">
+                <span class="tag tag-remote">Remote</span>
+                <span class="tag tag-hybrid">Hybrid</span>
+                <span class="tag" style="background:#f0fdf4;color:#15803d;border-color:#bbf7d0">Entry Level</span>
+              </div>
+              <h3>Junior Web / App Developer</h3>
+              <p class="job-salary">S$10 – S$18 / hr &nbsp;·&nbsp; 15–25 hrs / week</p>
+              <p class="job-salary-note">Tech projects · training fully provided</p>
+            </div>
+            <div class="job-block">
+              <div class="job-block-label">Job scope</div>
+              <ul>
+                <li>Assist in building and updating web pages and simple apps under senior guidance</li>
+                <li>Test features, log bugs and help maintain basic documentation</li>
+                <li>Attend short async check-ins and learn through real project work</li>
+              </ul>
+            </div>
+            <div class="job-block">
+              <div class="job-block-label">Requirements</div>
+              <ul>
+                <li>Basic familiarity with HTML/CSS or any coding language — self-taught or course certificate welcome</li>
+                <li>Keen to learn, reliable with deadlines and communicates proactively</li>
+                <li>Singapore Citizen or Permanent Resident (no work pass)</li>
+              </ul>
+            </div>
+            <div class="job-perks">
+              <span class="perk">Full training included</span>
+              <span class="perk">Flexi hours</span>
+              <span class="perk">Work from home</span>
+              <span class="perk">Mentorship</span>
+            </div>
+            <div class="job-footer">
+              <a class="btn btn-primary btn-sm btn-full" href="#contact">Apply for this role</a>
+            </div>
+          </article>
+
+          <!-- 2 -->
+          <article class="job-card teal">
+            <div class="job-header">
+              <div class="job-tags">
+                <span class="tag tag-hybrid">Hybrid</span>
+                <span class="tag tag-flex">Flex hours</span>
+                <span class="tag" style="background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe">Mid Level</span>
+              </div>
+              <h3>Customer Support Specialist</h3>
+              <p class="job-salary">S$9 – S$15 / hr &nbsp;·&nbsp; 20–30 hrs / week</p>
+              <p class="job-salary-note">Online / chat-based support · APAC hours</p>
+            </div>
+            <div class="job-block">
+              <div class="job-block-label">Job scope</div>
+              <ul>
+                <li>Respond to customer queries via live chat, email or WhatsApp within agreed SLAs</li>
+                <li>Resolve common issues using provided scripts and escalation guides</li>
+                <li>Log feedback and flag recurring problems to the team lead</li>
+              </ul>
+            </div>
+            <div class="job-block">
+              <div class="job-block-label">Requirements</div>
+              <ul>
+                <li>Clear written communication in English; Mandarin or Malay a bonus</li>
+                <li>Comfortable using basic online tools (e.g. Zendesk, WhatsApp Business, Google Sheets)</li>
+                <li>Singapore Citizen or Permanent Resident; some prior customer-facing experience helpful but not required</li>
+              </ul>
+            </div>
+            <div class="job-perks">
+              <span class="perk">No prior degree needed</span>
+              <span class="perk">Async friendly</span>
+              <span class="perk">Consistent hours</span>
+              <span class="perk">CPF contributions</span>
+            </div>
+            <div class="job-footer">
+              <a class="btn btn-primary btn-sm btn-full" href="#contact">Apply for this role</a>
+            </div>
+          </article>
+
+          <!-- 3 -->
+          <article class="job-card amber">
+            <div class="job-header">
+              <div class="job-tags">
+                <span class="tag tag-remote">Remote</span>
+                <span class="tag tag-flex">Flex hours</span>
+                <span class="tag" style="background:#f0fdf4;color:#15803d;border-color:#bbf7d0">Entry Level</span>
+              </div>
+              <h3>Social Media &amp; Content Assistant</h3>
+              <p class="job-salary">S$8 – S$14 / hr &nbsp;·&nbsp; 10–20 hrs / week</p>
+              <p class="job-salary-note">Content creation · scheduling · community</p>
+            </div>
+            <div class="job-block">
+              <div class="job-block-label">Job scope</div>
+              <ul>
+                <li>Create and schedule social media posts (Instagram, TikTok, Facebook) using provided brand guidelines</li>
+                <li>Respond to comments and messages; help grow community engagement</li>
+                <li>Assist in simple graphic creation using Canva or similar tools</li>
+              </ul>
+            </div>
+            <div class="job-block">
+              <div class="job-block-label">Requirements</div>
+              <ul>
+                <li>Active on social media and understands what makes content engaging for a SG audience</li>
+                <li>Basic Canva or phone video editing skills; willingness to learn content tools</li>
+                <li>Singapore Citizen or Permanent Resident; students and fresh graduates welcome</li>
+              </ul>
+            </div>
+            <div class="job-perks">
+              <span class="perk">Students welcome</span>
+              <span class="perk">100% WFH</span>
+              <span class="perk">Creative freedom</span>
+              <span class="perk">Canva provided</span>
+            </div>
+            <div class="job-footer">
+              <a class="btn btn-primary btn-sm btn-full" href="#contact">Apply for this role</a>
+            </div>
+          </article>
+
+          <!-- 4 -->
+          <article class="job-card">
+            <div class="job-header">
+              <div class="job-tags">
+                <span class="tag tag-hybrid">Hybrid</span>
+                <span class="tag tag-remote">Remote</span>
+                <span class="tag" style="background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe">Mid Level</span>
+              </div>
+              <h3>HR &amp; Admin Coordinator</h3>
+              <p class="job-salary">S$11 – S$17 / hr &nbsp;·&nbsp; 20–28 hrs / week</p>
+              <p class="job-salary-note">People ops · scheduling · basic payroll support</p>
+            </div>
+            <div class="job-block">
+              <div class="job-block-label">Job scope</div>
+              <ul>
+                <li>Coordinate interview schedules, onboarding paperwork and leave tracking</li>
+                <li>Maintain employee records and assist with payroll data entry</li>
+                <li>Handle day-to-day HR admin queries and draft simple communication templates</li>
+              </ul>
+            </div>
+            <div class="job-block">
+              <div class="job-block-label">Requirements</div>
+              <ul>
+                <li>1+ year admin or HR assistant experience; diploma or above preferred</li>
+                <li>Organised, detail-oriented and comfortable with Google Workspace or MS Office</li>
+                <li>Singapore Citizen or Permanent Resident</li>
+              </ul>
+            </div>
+            <div class="job-perks">
+              <span class="perk">Family-friendly hours</span>
+              <span class="perk">CPF-compliant</span>
+              <span class="perk">Clear job scope</span>
+              <span class="perk">Stable schedule</span>
+            </div>
+            <div class="job-footer">
+              <a class="btn btn-primary btn-sm btn-full" href="#contact">Apply for this role</a>
+            </div>
+          </article>
+
+          <!-- 5 -->
+          <article class="job-card teal">
+            <div class="job-header">
+              <div class="job-tags">
+                <span class="tag tag-hybrid">Hybrid</span>
+                <span class="tag tag-flex">Flex hours</span>
+                <span class="tag" style="background:#f0fdf4;color:#15803d;border-color:#bbf7d0">Entry Level</span>
+              </div>
+              <h3>Project Admin &amp; Tracking Assistant</h3>
+              <p class="job-salary">S$9 – S$15 / hr &nbsp;·&nbsp; 15–25 hrs / week</p>
+              <p class="job-salary-note">Task coordination · updates · reporting</p>
+            </div>
+            <div class="job-block">
+              <div class="job-block-label">Job scope</div>
+              <ul>
+                <li>Update project trackers, to-do lists and deadlines on tools like Notion or Trello</li>
+                <li>Send reminders and brief status updates to team members on behalf of the project lead</li>
+                <li>Compile simple progress reports using provided templates</li>
+              </ul>
+            </div>
+            <div class="job-block">
+              <div class="job-block-label">Requirements</div>
+              <ul>
+                <li>Good attention to detail and strong follow-through on tasks assigned</li>
+                <li>Familiar with basic productivity apps (Google Sheets, Trello or similar); willing to learn new ones</li>
+                <li>Singapore Citizen or Permanent Resident; no prior project management qualification needed</li>
+              </ul>
+            </div>
+            <div class="job-perks">
+              <span class="perk">No experience needed</span>
+              <span class="perk">Flexible schedule</span>
+              <span class="perk">On-the-job training</span>
+              <span class="perk">Low stress</span>
+            </div>
+            <div class="job-footer">
+              <a class="btn btn-primary btn-sm btn-full" href="#contact">Apply for this role</a>
+            </div>
+          </article>
+
+          <!-- 6 -->
+          <article class="job-card amber">
+            <div class="job-header">
+              <div class="job-tags">
+                <span class="tag tag-remote">Remote</span>
+                <span class="tag tag-hybrid">Hybrid</span>
+                <span class="tag" style="background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe">Mid Level</span>
+              </div>
+              <h3>Data Entry &amp; Reporting Assistant</h3>
+              <p class="job-salary">S$9 – S$14 / hr &nbsp;·&nbsp; 15–25 hrs / week</p>
+              <p class="job-salary-note">Spreadsheets · data cleaning · simple dashboards</p>
+            </div>
+            <div class="job-block">
+              <div class="job-block-label">Job scope</div>
+              <ul>
+                <li>Input, clean and organise data sets in Excel or Google Sheets accurately</li>
+                <li>Assist in generating weekly or monthly reports using provided templates</li>
+                <li>Flag data inconsistencies and help maintain clean records for the business team</li>
+              </ul>
+            </div>
+            <div class="job-block">
+              <div class="job-block-label">Requirements</div>
+              <ul>
+                <li>Comfortable with Excel or Google Sheets — basic formulas (SUM, VLOOKUP) sufficient</li>
+                <li>Methodical and accurate; able to work independently on structured tasks</li>
+                <li>Singapore Citizen or Permanent Resident; fresh graduates and career returners welcome</li>
+              </ul>
+            </div>
+            <div class="job-perks">
+              <span class="perk">Career returners welcome</span>
+              <span class="perk">Work from home</span>
+              <span class="perk">Steady workflow</span>
+              <span class="perk">Skills training</span>
+            </div>
+            <div class="job-footer">
+              <a class="btn btn-primary btn-sm btn-full" href="#contact">Apply for this role</a>
+            </div>
+          </article>
+
+        </div><!-- .job-grid -->
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS — right after jobs: shows how easy it is to apply, funnels to contact -->
+    <section id="process" class="section process-section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-label">How it works</span>
+          <h2 class="section-title">From first message to offer</h2>
+          <p class="section-sub">Four simple steps. No fluff, no automated rejection emails.</p>
+        </div>
+        <div class="process-grid">
+          <div class="process-item">
+            <div class="process-num">01</div>
+            <h3>Reach out</h3>
+            <p>Submit the form below or email us — no polished CV needed, just tell us what you're looking for. Takes 3 minutes.</p>
+          </div>
+          <div class="process-item">
+            <div class="process-num">02</div>
+            <h3>Fit call</h3>
+            <p>A quick 20-min chat on your skills, salary expectations, WFH needs and availability.</p>
+          </div>
+          <div class="process-item">
+            <div class="process-num">03</div>
+            <h3>Shortlist</h3>
+            <p>We match you to 2–3 live openings aligned to your goals — no spam, no irrelevant JDs.</p>
+          </div>
+          <div class="process-item">
+            <div class="process-num">04</div>
+            <h3>Introduction</h3>
+            <p>Warm intro to hiring teams. We support you through to signed offer and day-one onboarding.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION / WHY — values reinforcement when visitor is warm on the jobs -->
+    <section class="section mission-section">
+      <div class="wrap">
+        <div class="mission-intro">
+          <span class="section-label">Our mission</span>
+          <h2 class="section-title">Shaping Tomorrow's Workforce,<br>Right Here in Singapore</h2>
+          <p class="section-sub" style="margin-inline: auto; margin-bottom: 2.5rem;">At Match iNet, we believe every Singaporean deserves access to meaningful work that genuinely fits their life. We bridge the gap between driven local professionals and rewarding remote careers — so you can take charge of your professional future from wherever home is.</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">✅</div>
+            <h3>Every listing is fully verified</h3>
+            <p>We vet every role before it reaches you. No ghost jobs, no vague scope, no bait-and-switch offers — what you see is what you get.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🌱</div>
+            <h3>All experience levels welcome</h3>
+            <p>Fresh starter or seasoned professional — we find roles aligned to exactly where you are right now, not just your past titles.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🗓️</div>
+            <h3>Build a schedule that's truly yours</h3>
+            <p>Design a work day around your family, your health and your priorities — not an office clock set by someone else.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3>Transparent pay, no surprises</h3>
+            <p>We share salary benchmarks upfront so you walk into every conversation knowing your worth — competitive, clear and respected.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎓</div>
+            <h3>Training and mentorship included</h3>
+            <p>Our employer partners provide structured onboarding, role-specific training and ongoing mentorship — your growth is part of the deal.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🇸🇬</div>
+            <h3>Singapore Citizens &amp; PRs only</h3>
+            <p>We serve our home community — currently open exclusively to Singapore Citizens and Permanent Residents. Work pass holders are not eligible at this stage.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / TEAM — deeper trust building for undecided visitors -->
+    <section class="section about-section">
+      <div class="wrap">
+        <div class="grid-2">
+          <div>
+            <img src="assets/team-cowork.jpg" alt="Match iNet team at a Singapore co-working space" class="about-img" />
+          </div>
+          <div>
+            <span class="section-label">About us</span>
+            <h2 class="section-title">We're from here. We get what matters to you.</h2>
+            <p class="section-sub" style="margin-bottom: 1.75rem;">
+              Match iNet was built for Singaporeans — because local jobseekers deserve a career platform that understands CPF, AWS expectations, and the reality of balancing family life with work.
+            </p>
+            <ul class="check-list">
+              <li>
+                <span class="check-list-icon">✓</span>
+                <span class="check-list-text"><strong>Open to Singapore Citizens &amp; PRs only</strong>We serve our own community first — no work pass holders or foreigners at this stage.</span>
+              </li>
+              <li>
+                <span class="check-list-icon">✓</span>
+                <span class="check-list-text"><strong>CPF-compliant, contract-clear roles</strong>Every employer is screened so there are no nasty surprises on your payslip.</span>
+              </li>
+              <li>
+                <span class="check-list-icon">✓</span>
+                <span class="check-list-text"><strong>Flexible hours agreed before day one</strong>No surprise overtime, no unclear expectations — schedules are locked in upfront.</span>
+              </li>
+              <li>
+                <span class="check-list-icon">✓</span>
+                <span class="check-list-text"><strong>Real support, not bots</strong>A dedicated person handles your enquiry from first contact to first day on the job.</span>
+              </li>
+            </ul>
+            <a href="#contact" class="btn btn-primary">Get started today</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES — supplementary info for those who want to know more -->
+    <section id="services" class="section">
+      <div class="wrap">
+        <div class="section-head section-head--wide">
+          <span class="section-label">What we do</span>
+          <h2 class="section-title">Your career bridge, built for Singapore</h2>
+          <p class="section-sub">We're not a job board. We're a career gateway — we connect you directly with employers who value flexible, committed workers.</p>
+        </div>
+        <div class="services-grid">
+          <div class="svc-card">
+            <div class="svc-icon svc-icon-blue">🌐</div>
+            <h3>Remote &amp; WFH roles</h3>
+            <p>Curated part-time and flexible opportunities with employers who genuinely walk the talk on remote work.</p>
+          </div>
+          <div class="svc-card">
+            <div class="svc-icon svc-icon-teal">🎯</div>
+            <h3>Beginner-friendly matching</h3>
+            <p>No prior experience? No problem. We connect you to entry-level roles where full training is provided from day one.</p>
+          </div>
+          <div class="svc-card">
+            <div class="svc-icon svc-icon-amber">🤝</div>
+            <h3>Employer partnerships</h3>
+            <p>We work with trusted Singapore-based and APAC employers to bring you verified, legitimate openings — nothing shady.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS — social proof close to the apply CTA -->
+    <section id="testimonials" class="section testimonials-section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-label">Real stories</span>
+          <h2 class="section-title">What our candidates say</h2>
+          <p class="section-sub">Singaporeans who found their flexible careers through Match iNet.</p>
+        </div>
+        <div class="testi-grid">
+          <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p class="testi-quote">I was sceptical about remote work being real in Singapore. Match iNet found me a part-time dev role — proper CPF, clear contract, no tricks. The team was on WhatsApp whenever I had questions.</p>
+            <div class="testi-profile">
+              <img src="assets/testimonial-1.jpg" alt="Wei Hao Lim" />
+              <div>
+                <p class="testi-name">Wei Hao Lim</p>
+                <p class="testi-role">Junior Developer · Remote since 2023</p>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p class="testi-quote">After two kids, I needed real flexibility, not "flexible in theory." Match iNet understood immediately — I landed a 20-hour hybrid role within 5 weeks and it fits my family schedule perfectly.</p>
+            <div class="testi-profile">
+              <img src="assets/testimonial-2.jpg" alt="Priya Rajan" />
+              <div>
+                <p class="testi-name">Priya Rajan</p>
+                <p class="testi-role">Admin Coordinator · Hybrid, East SG</p>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p class="testi-quote">I had no work experience after a long career break. Match iNet matched me to a content role with full WFH — they said my background didn't matter, and they were right. I'm earning again.</p>
+            <div class="testi-profile">
+              <img src="assets/testimonial-3.jpg" alt="Nurul Ain" />
+              <div>
+                <p class="testi-name">Nurul Ain Binte Rosli</p>
+                <p class="testi-role">Social Media Assistant · WFH full time</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact-section">
+      <div class="wrap">
+        <span class="section-label">Get in touch</span>
+        <h2 class="section-title">Ready to work on your terms?</h2>
+        <p class="section-sub">Use the form below or email us. We reply to every serious enquiry within two business days.</p>
+        <div class="contact-layout">
+          <div class="form-panel">
+            <h3>Apply with us</h3>
+            <p>Tell us about your ideal role and working arrangement. We'll be in touch.</p>
+
+            <div class="embed-shell">
+              <div class="form-embed-wrapper">
+                <div data-cddform="sg-singapore" data-origin="www.movelist.com" data-height="860"></div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="contact-aside">
+            <div class="cta-card">
+              <h3>Prefer email?</h3>
+              <p>Send your CV directly — we reply personally, not from a template.</p>
+              <a href="mailto:hr@matchinet.com?subject=Career enquiry" class="btn btn-primary btn-full">Email hr@matchinet.com</a>
+            </div>
+            <div class="aside-info">
+              <h4>Our office</h4>
+              <address>
+                6 Raffles Quay, #14-02<br />
+                John Hancock Tower<br />
+                Singapore 048580
+              </address>
+              <p style="margin: .9rem 0 0; font-size: .88rem; color: var(--muted);">
+                Walk-ins by appointment. Office address for correspondence and client meetings.
+              </p>
+              <p style="margin: .75rem 0 0; font-size: .88rem;">
+                <a href="tel:+6581308263">+65 8130 8263</a>
+              </p>
+              <p style="margin: .35rem 0 0; font-size: .88rem;">
+                <a href="mailto:hr@matchinet.com">hr@matchinet.com</a>
+              </p>
+              <p style="margin: .35rem 0 0; font-size: .88rem;">
+                <a href="https://matchinet.com">matchinet.com</a>
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+
+        <!-- Col 1: Branding -->
+        <div>
+          <div class="logo"><div class="logo-dot"></div>Match iNet</div>
+          <p style="margin: .85rem 0 0; font-size: .9rem; line-height: 1.75; max-width: 30ch; color: #94a3b8;">Singapore's career bridge for remote, WFH and flexible part-time roles. Open exclusively to Singapore Citizens and Permanent Residents.</p>
+        </div>
+
+        <!-- Col 2: Quick Links (no Privacy / Terms) -->
+        <div class="footer-links-col">
+          <h4>Quick links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#roles">Open Roles</a></li>
+            <li><a href="#process">How it Works</a></li>
+            <li><a href="#testimonials">Success Stories</a></li>
+            <li><a href="#services">What We Do</a></li>
+            <li><a href="#contact">Apply Now</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Open Positions -->
+        <div class="footer-links-col">
+          <h4>Open positions</h4>
+          <ul>
+            <li><a href="mailto:hr@matchinet.com?subject=Application — Junior Web Developer">Junior Web / App Developer</a></li>
+            <li><a href="mailto:hr@matchinet.com?subject=Application — Customer Support Specialist">Customer Support Specialist</a></li>
+            <li><a href="mailto:hr@matchinet.com?subject=Application — Social Media Assistant">Social Media &amp; Content Assistant</a></li>
+            <li><a href="mailto:hr@matchinet.com?subject=Application — HR Admin Coordinator">HR &amp; Admin Coordinator</a></li>
+            <li><a href="mailto:hr@matchinet.com?subject=Application — Project Admin Assistant">Project Admin &amp; Tracking Assistant</a></li>
+            <li><a href="mailto:hr@matchinet.com?subject=Application — Data Entry Assistant">Data Entry &amp; Reporting Assistant</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact Block -->
+        <div class="footer-links-col footer-col-contact">
+          <h4>Contact us</h4>
+          <address>
+            6 Raffles Quay, #14-02<br />
+            John Hancock Tower<br />
+            Singapore 048580
+          </address>
+          <p style="margin: .6rem 0 0;">
+            <a href="tel:+6581308263">+65 8130 8263</a>
+          </p>
+          <p style="margin: .3rem 0 0;">
+            <a href="mailto:hr@matchinet.com">hr@matchinet.com</a>
+          </p>
+          <p style="margin: .3rem 0 0;">
+            <a href="https://matchinet.com">matchinet.com</a>
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="y"></span> Match iNet. All rights reserved. Open to Singapore Citizens and Permanent Residents only.</span>
+        <div class="footer-legal">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    /* Animated counters */
+    const counters = document.querySelectorAll(".counter");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = +el.dataset.target;
+        const step = Math.ceil(target / 50);
+        let cur = 0;
+        const tick = () => {
+          cur = Math.min(cur + step, target);
+          el.textContent = cur;
+          if (cur < target) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => observer.observe(c));
+  </script>
+  <script>
+    const formEmbedMount = document.querySelector("[data-cddform]");
+    if (formEmbedMount) {
+      formEmbedMount.dataset.origin = window.location.host;
+    }
+  </script>
+  <script src="https://staging.chatfromforms.com/form-embed.js?v=0.1" defer></script>
+  <script>
+    const formEmbedWrapper = document.querySelector(".form-embed-wrapper");
+    let formEmbedAutoResized = false;
+
+    const getFallbackHeight = () => window.innerWidth < 640 ? 980 : 760;
+
+    const resizeIframe = iframe => {
+      if (!iframe) return;
+
+      iframe.style.display = "block";
+      iframe.style.width = "100%";
+      iframe.style.border = "0";
+      iframe.style.overflow = "hidden";
+      iframe.setAttribute("scrolling", "no");
+
+      if (!formEmbedAutoResized) {
+        iframe.style.height = `${getFallbackHeight()}px`;
+        iframe.style.minHeight = `${getFallbackHeight()}px`;
+      }
+    };
+
+    if (formEmbedWrapper) {
+      const syncIframes = () => {
+        formEmbedWrapper.querySelectorAll("iframe").forEach(resizeIframe);
+      };
+
+      new MutationObserver(syncIframes).observe(formEmbedWrapper, {
+        childList: true,
+        subtree: true
+      });
+
+      window.addEventListener("load", syncIframes);
+      window.addEventListener("resize", syncIframes);
+
+      window.addEventListener("message", event => {
+        if (event.origin !== "https://staging.chatfromforms.com") return;
+        if (event.data?.type !== "setIFrameHeight") return;
+
+        const iframe = Array.from(formEmbedWrapper.querySelectorAll("iframe"))
+          .find(frame => frame.contentWindow === event.source);
+
+        if (!iframe) return;
+
+        formEmbedAutoResized = true;
+
+        const measuredHeight = Number(event.data.data?.height || 0);
+        const buffer = window.innerWidth < 640 ? 24 : 40;
+        const minHeight = window.innerWidth < 640 ? 920 : 680;
+        const nextHeight = Math.max(measuredHeight + buffer, minHeight);
+
+        iframe.style.minHeight = "0";
+        iframe.style.height = `${nextHeight}px`;
+        iframe.setAttribute("scrolling", "no");
+      });
+
+      window.setTimeout(syncIframes, 300);
+      window.setTimeout(syncIframes, 1000);
+    }
+  </script>
+</body>
+</html>

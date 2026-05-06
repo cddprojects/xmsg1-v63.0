@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Match iNet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f7f9fc; --surface: #ffffff; --border: #e4e9f2;
+      --text: #0d1b35; --muted: #5a6a85; --accent: #1a56db;
+      --accent-lt: #dbeafe; --radius: 16px; --radius-sm: 10px;
+      --max: 1160px; --max-prose: 760px;
+      --sh-sm: 0 1px 3px rgba(13,27,53,.06),0 4px 12px rgba(13,27,53,.07);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "Inter", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(100% - 2.5rem, var(--max)); margin-inline: auto; }
+
+    /* Header */
+    header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: .9rem 0; }
+    .logo { font-family: "Sora", sans-serif; font-weight: 800; font-size: 1.25rem; letter-spacing: -.03em; color: var(--text); display: flex; align-items: center; gap: .45rem; }
+    .logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    .nav-links { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); font-size: .9rem; font-weight: 500; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; padding: .55rem 1rem; border-radius: 999px; font-family: inherit; font-weight: 600; font-size: .875rem; border: none; cursor: pointer; transition: transform .15s, box-shadow .15s; text-decoration: none !important; }
+    .btn-primary { background: linear-gradient(135deg, #1a56db, #1342b0); color: #fff; box-shadow: 0 4px 16px rgba(26,86,219,.32); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(26,86,219,.38); }
+    .btn-nav {
+      background: #1a56db; color: #fff !important;
+      padding: .65rem 1.4rem; font-size: .92rem; font-weight: 700;
+      border-radius: 999px; letter-spacing: .01em;
+      box-shadow: 0 2px 8px rgba(26,86,219,.35), 0 0 0 2px rgba(26,86,219,.12);
+      transition: background .15s, transform .15s, box-shadow .15s;
+    }
+    .btn-nav:hover { background: #1342b0; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(26,86,219,.45); text-decoration: none; }
+
+    /* Page hero */
+    .page-hero { background: var(--surface); border-bottom: 1px solid var(--border); padding: clamp(2.5rem,5vw,4rem) 0 clamp(2rem,4vw,3rem); }
+    .breadcrumb { font-size: .82rem; color: var(--muted); margin-bottom: 1rem; }
+    .breadcrumb a { color: var(--accent); }
+    .breadcrumb span { margin: 0 .4rem; color: var(--border); }
+    .page-hero h1 { font-family: "Sora", sans-serif; font-size: clamp(1.85rem,4vw,2.5rem); font-weight: 800; letter-spacing: -.04em; margin: 0 0 .65rem; }
+    .page-meta { font-size: .875rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+    .page-meta-tag { background: var(--accent-lt); color: var(--accent); font-size: .75rem; font-weight: 600; padding: .25rem .7rem; border-radius: 999px; border: 1px solid #bfdbfe; }
+
+    /* Prose */
+    .prose-outer { padding: clamp(2.5rem,5vw,4rem) 0 clamp(3rem,6vw,5rem); }
+    .prose { width: min(100%, var(--max-prose)); margin-inline: auto; }
+    .prose h2 { font-family: "Sora", sans-serif; font-size: clamp(1.15rem,2.5vw,1.35rem); font-weight: 700; letter-spacing: -.02em; margin: 2.5rem 0 .75rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--text); }
+    .prose h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+    .prose h3 { font-size: 1rem; font-weight: 700; margin: 1.5rem 0 .5rem; color: var(--text); }
+    .prose p { margin: 0 0 1rem; color: var(--muted); font-size: .95rem; line-height: 1.75; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose ul, .prose ol { margin: 0 0 1.1rem; padding-left: 1.35rem; color: var(--muted); font-size: .95rem; line-height: 1.75; }
+    .prose li { margin-bottom: .4rem; }
+    .prose strong { color: var(--text); font-weight: 600; }
+    .prose a { color: var(--accent); }
+    .prose .highlight-box { background: var(--accent-lt); border: 1px solid #bfdbfe; border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin: 1.5rem 0; }
+    .prose .highlight-box p { margin: 0; color: #1e40af; font-size: .9rem; }
+    .prose .dpo-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.35rem; box-shadow: var(--sh-sm); margin-top: 1.25rem; }
+    .prose .dpo-card p { margin: .25rem 0; font-size: .9rem; }
+
+    /* ToC */
+    .toc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; box-shadow: var(--sh-sm); }
+    .toc h3 { font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin: 0 0 .75rem; }
+    .toc ol { margin: 0; padding-left: 1.25rem; }
+    .toc li { margin-bottom: .35rem; font-size: .875rem; }
+    .toc a { color: var(--accent); }
+
+    /* Footer */
+    footer { background: var(--text); color: #94a3b8; padding: clamp(2rem,4vw,3rem) 0 1.75rem; }
+    .footer-grid { display: grid; gap: 2rem; }
+    @media (min-width: 640px)  { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1.1fr 1.3fr; column-gap: 3.5rem; } }
+    .footer-col-contact { text-align: left; display: flex; flex-direction: column; align-items: flex-start; }
+    @media (min-width: 1024px) { .footer-col-contact { padding-left: 30px; } }
+    .footer-col-contact address { font-style: normal; font-size: .9rem; line-height: 1.85; color: #94a3b8; }
+    .footer-col-contact a { color: #93c5fd; }
+    .footer-col-contact a:hover { color: #fff; text-decoration: none; }
+    .footer-links-col h4 { color: #f1f5f9; font-size: .82rem; text-transform: uppercase; letter-spacing: .07em; margin: 0 0 .85rem; }
+    .footer-links-col ul { list-style: none; padding: 0; margin: 0; }
+    .footer-links-col li { margin-bottom: .5rem; font-size: .9rem; white-space: nowrap; }
+    .footer-links-col a { color: #94a3b8; }
+    .footer-links-col a:hover { color: #fff; text-decoration: none; }
+    footer .logo { color: #fff; margin-bottom: .65rem; }
+    footer .logo-dot { background: #60a5fa; }
+    footer p { margin: 0; font-size: .9rem; line-height: 1.7; }
+    footer h4 { color: #f1f5f9; font-size: .82rem; text-transform: uppercase; letter-spacing: .07em; margin: 0 0 .75rem; }
+    footer address { font-style: normal; font-size: .9rem; line-height: 1.75; }
+    footer a { color: #93c5fd; }
+    footer a:hover { color: #fff; }
+    .footer-bottom { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.08); font-size: .82rem; display: flex; flex-wrap: wrap; gap: .75rem; justify-content: space-between; align-items: center; }
+    .footer-legal { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    .footer-legal a { color: #94a3b8; font-size: .82rem; }
+    .footer-legal a:hover { color: #fff; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap nav">
+      <a href="index.html" class="logo">
+        <div class="logo-dot"></div>
+        Match iNet
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#roles">Open Roles</a>
+        <a href="index.html#testimonials">Stories</a>
+        <a href="index.html#contact">Apply</a>
+        <a href="index.html#contact" class="btn-nav">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-hero">
+      <div class="wrap">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span>›</span> Privacy Policy
+        </div>
+        <h1>Privacy Policy</h1>
+        <div class="page-meta">
+          <span>Match iNet</span>
+          <span>·</span>
+          <span>Last updated: May 2026</span>
+          <span class="page-meta-tag">PDPA Compliant</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose-outer">
+      <div class="wrap">
+        <div class="prose">
+
+          <div class="toc">
+            <h3>Contents</h3>
+            <ol>
+              <li><a href="#s1">Who we are</a></li>
+              <li><a href="#s2">Personal data we collect</a></li>
+              <li><a href="#s3">How we use your data</a></li>
+              <li><a href="#s4">Sharing your data</a></li>
+              <li><a href="#s5">Data retention</a></li>
+              <li><a href="#s6">Your rights under PDPA</a></li>
+              <li><a href="#s7">Cookies and analytics</a></li>
+              <li><a href="#s8">Data security</a></li>
+              <li><a href="#s9">Our Data Protection Officer</a></li>
+              <li><a href="#s10">Updates to this policy</a></li>
+            </ol>
+          </div>
+
+          <div class="highlight-box">
+            <p><strong>Plain English summary:</strong> We collect your personal data only to match you with remote and flexible jobs. We will not sell your data or share it with any employer without your knowledge and agreement. You can ask us to delete your information at any time.</p>
+          </div>
+
+          <h2 id="s1">1. Who we are</h2>
+          <p>Match iNet (<strong>"we"</strong>, <strong>"us"</strong>, <strong>"our"</strong>) is a recruitment consultancy operating in Singapore, accessible at <a href="https://matchinet.com">matchinet.com</a>. We specialise in sourcing remote, hybrid and flexible-schedule employment opportunities for Singapore residents.</p>
+          <p>This Privacy Policy explains how we collect, use, disclose and protect personal data in accordance with the <strong>Personal Data Protection Act 2012 (PDPA) of Singapore</strong>. By submitting your information through our website or by corresponding with us, you agree to the practices described in this policy.</p>
+
+          <h2 id="s2">2. Personal data we collect</h2>
+          <p>We collect personal data through our online application form, email correspondence, and direct communication (e.g. WhatsApp, phone). The data we may collect includes:</p>
+          <h3>Identity and contact data</h3>
+          <ul>
+            <li>Full name (as per NRIC or passport)</li>
+            <li>Email address and mobile number</li>
+            <li>Residential address (where required for employer documentation)</li>
+            <li>NRIC/FIN number (only when required by an employer for formal offer processing; collected with your explicit consent)</li>
+          </ul>
+          <h3>Professional and employment data</h3>
+          <ul>
+            <li>Curriculum vitae (CV) and work history</li>
+            <li>Educational qualifications and professional certifications</li>
+            <li>Current and expected salary information</li>
+            <li>Employment preferences (remote/hybrid/flex arrangements, role type, industries)</li>
+            <li>Notice period and availability</li>
+          </ul>
+          <h3>Technical and usage data</h3>
+          <ul>
+            <li>IP address and browser type (collected automatically when you visit our site)</li>
+            <li>Pages visited and session duration (for website analytics only)</li>
+          </ul>
+          <p>We do not knowingly collect sensitive personal data (such as race, religion, health or financial data) unless it is voluntarily provided as part of your CV and is directly relevant to an employment application.</p>
+
+          <h2 id="s3">3. How we use your data</h2>
+          <p>We use the personal data we collect for the following purposes:</p>
+          <ul>
+            <li><strong>Job matching and recruitment:</strong> To identify suitable remote or flexible employment opportunities and present your profile to relevant employer-clients (with your prior consent).</li>
+            <li><strong>Candidate management:</strong> To contact you about suitable roles, schedule interviews, and manage the recruitment process on your behalf.</li>
+            <li><strong>Compliance:</strong> To comply with applicable Singapore laws, including the Employment Act and MOM work pass requirements.</li>
+            <li><strong>Service improvement:</strong> To improve how we operate our website and matching processes. This is based on aggregated, anonymised data and does not involve profiling individuals.</li>
+            <li><strong>Communication:</strong> To respond to your enquiries and send you relevant job alerts or service updates. You may opt out at any time.</li>
+          </ul>
+          <p>We do not use your personal data for automated decision-making or profiling that produces legal or similarly significant effects.</p>
+
+          <h2 id="s4">4. Sharing your data</h2>
+          <p>We do not sell, rent or trade your personal data. We only share data in the following circumstances:</p>
+          <ul>
+            <li><strong>Employer-clients:</strong> We will share your CV and relevant profile information with potential employers only after obtaining your explicit agreement to do so for a specific role or company.</li>
+            <li><strong>Service providers:</strong> We may use third-party tools (e.g. form providers, email services, cloud storage) that process data on our behalf. These providers are contractually bound to protect your data and are not permitted to use it for their own purposes.</li>
+            <li><strong>Legal requirements:</strong> We may disclose data if required to do so by law, court order or government authority in Singapore.</li>
+          </ul>
+          <p>We do not transfer personal data outside of Singapore without ensuring appropriate safeguards are in place.</p>
+
+          <h2 id="s5">5. Data retention</h2>
+          <p>We retain your personal data only for as long as is necessary for the purposes for which it was collected:</p>
+          <ul>
+            <li><strong>Active candidates:</strong> We retain your profile for up to <strong>3 years</strong> from the date of last contact or last active engagement, whichever is more recent.</li>
+            <li><strong>Successful placements:</strong> Employment-related records are retained for up to <strong>7 years</strong> to comply with MOM and statutory requirements.</li>
+            <li><strong>Withdrawn consent:</strong> Upon your request to withdraw consent, we will delete or anonymise your personal data within <strong>30 business days</strong>, unless retention is required by law.</li>
+          </ul>
+
+          <h2 id="s6">6. Your rights under PDPA</h2>
+          <p>Under the Personal Data Protection Act 2012, you have the right to:</p>
+          <ul>
+            <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+            <li><strong>Correction:</strong> Request that we correct any inaccurate or incomplete personal data.</li>
+            <li><strong>Withdrawal of consent:</strong> Withdraw your consent for us to collect, use or disclose your personal data at any time. Note that this may affect our ability to assist with your job search.</li>
+            <li><strong>Data portability:</strong> Request that we provide your data in a structured, commonly used electronic format where technically feasible.</li>
+          </ul>
+          <p>To exercise any of these rights, please contact our Data Protection Officer at <a href="mailto:hr@matchinet.com">hr@matchinet.com</a>. We will respond within <strong>30 calendar days</strong>.</p>
+
+          <h2 id="s7">7. Cookies and analytics</h2>
+          <p>Our website uses minimal cookies to ensure basic functionality. We may use analytics tools (such as Google Analytics) to understand how visitors use our site. These tools collect anonymised data including page views, session duration and browser type. They do not identify individual visitors.</p>
+          <p>You may disable cookies through your browser settings. Doing so will not affect your ability to browse our website, though some interactive features may be limited.</p>
+
+          <h2 id="s8">8. Data security</h2>
+          <p>We take the security of your personal data seriously. We implement reasonable technical and organisational measures to protect your data against unauthorised access, loss, destruction or disclosure. These include encrypted data transmission (HTTPS), access controls and regular security reviews.</p>
+          <p>While we strive to protect your information, no method of transmission over the internet is completely secure. In the event of a data breach that is likely to cause significant harm, we will notify affected individuals and the Personal Data Protection Commission (PDPC) as required under the PDPA.</p>
+
+          <h2 id="s9">9. Our Data Protection Officer</h2>
+          <p>If you have questions about this policy, wish to exercise your PDPA rights, or have a concern about how we handle your data, please contact our Data Protection Officer:</p>
+          <div class="dpo-card">
+            <p><strong>Data Protection Officer — Match iNet</strong></p>
+            <p>Email: <a href="mailto:hr@matchinet.com">hr@matchinet.com</a></p>
+            <p>Address: 6 Raffles Quay, #14-02, John Hancock Tower, Singapore 048580</p>
+            <p>Phone: <a href="tel:+6581308263">+65 8130 8263</a></p>
+            <p>We aim to respond to all data-related enquiries within 10 business days.</p>
+          </div>
+
+          <h2 id="s10">10. Updates to this policy</h2>
+          <p>We may update this Privacy Policy from time to time to reflect changes in our practices or in applicable law. When we make material changes, we will update the "Last updated" date at the top of this page. We encourage you to review this policy periodically.</p>
+          <p>Continued use of our services after any update constitutes your acceptance of the revised policy. If you have questions about any changes, please contact us.</p>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+
+        <!-- Col 1: Branding -->
+        <div>
+          <div class="logo"><div class="logo-dot"></div>Match iNet</div>
+          <p style="margin: .85rem 0 0; font-size: .9rem; line-height: 1.75; max-width: 30ch; color: #94a3b8;">Singapore's career bridge for remote, WFH and flexible part-time roles. Open exclusively to Singapore Citizens and Permanent Residents.</p>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-links-col">
+          <h4>Quick links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#roles">Open Roles</a></li>
+            <li><a href="index.html#process">How it Works</a></li>
+            <li><a href="index.html#testimonials">Success Stories</a></li>
+            <li><a href="index.html#services">What We Do</a></li>
+            <li><a href="index.html#contact">Apply Now</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Open Positions -->
+        <div class="footer-links-col">
+          <h4>Open positions</h4>
+          <ul>
+            <li><a href="mailto:hr@matchinet.com?subject=Application — Junior Web Developer">Junior Web / App Developer</a></li>
+            <li><a href="mailto:hr@matchinet.com?subject=Application — Customer Support Specialist">Customer Support Specialist</a></li>
+            <li><a href="mailto:hr@matchinet.com?subject=Application — Social Media Assistant">Social Media &amp; Content Assistant</a></li>
+            <li><a href="mailto:hr@matchinet.com?subject=Application — HR Admin Coordinator">HR &amp; Admin Coordinator</a></li>
+            <li><a href="mailto:hr@matchinet.com?subject=Application — Project Admin Assistant">Project Admin &amp; Tracking Assistant</a></li>
+            <li><a href="mailto:hr@matchinet.com?subject=Application — Data Entry Assistant">Data Entry &amp; Reporting Assistant</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact Block -->
+        <div class="footer-links-col footer-col-contact">
+          <h4>Contact us</h4>
+          <address>
+            6 Raffles Quay, #14-02<br />
+            John Hancock Tower<br />
+            Singapore 048580
+          </address>
+          <p style="margin: .6rem 0 0;">
+            <a href="tel:+6581308263">+65 8130 8263</a>
+          </p>
+          <p style="margin: .3rem 0 0;">
+            <a href="mailto:hr@matchinet.com">hr@matchinet.com</a>
+          </p>
+          <p style="margin: .3rem 0 0;">
+            <a href="https://matchinet.com">matchinet.com</a>
+          </p>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="y"></span> Match iNet. All rights reserved. Open to Singapore Citizens and Permanent Residents only.</span>
+        <div class="footer-legal">
+          <a href="privacy.html" aria-current="page">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>

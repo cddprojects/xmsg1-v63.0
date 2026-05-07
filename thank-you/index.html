@@ -27,9 +27,10 @@
 
     /* Header */
     header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
-    .nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: .9rem 0; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .9rem 0; }
     .logo { font-family: "Sora", sans-serif; font-weight: 800; font-size: 1.25rem; letter-spacing: -.03em; color: var(--text); display: flex; align-items: center; gap: .45rem; }
     .logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    .nav-actions { display: flex; align-items: center; gap: 1rem; margin-left: auto; }
     .nav-links { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
     .nav-links a { color: var(--muted); font-size: .9rem; font-weight: 500; }
     .nav-links a:hover { color: var(--text); text-decoration: none; }
@@ -48,6 +49,37 @@
       transition: background .15s, transform .15s, box-shadow .15s;
     }
     .btn-nav:hover { background: #1342b0; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(26,86,219,.45); text-decoration: none; }
+    .nav-toggle,
+    .nav-links-mobile { display: none; }
+    .nav-toggle {
+      display: inline-flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 4px;
+      width: 44px; height: 44px; border-radius: 14px;
+      border: 1px solid var(--border); background: var(--surface);
+      color: var(--text); box-shadow: var(--sh-sm); cursor: pointer;
+    }
+    .nav-toggle-bar {
+      width: 18px; height: 2px; border-radius: 999px;
+      background: currentColor; display: block;
+    }
+    .nav-links-mobile {
+      width: 100%; margin-top: .85rem; padding: .5rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); box-shadow: var(--sh-sm);
+    }
+    .nav-links-mobile.is-open { display: grid; gap: .2rem; }
+    .nav-links-mobile a {
+      display: block; padding: .85rem 1rem; border-radius: 12px;
+      color: var(--text); font-size: .95rem; font-weight: 600;
+    }
+    .nav-links-mobile a:hover { background: var(--accent-lt); text-decoration: none; }
+    @media (max-width: 768px) {
+      .nav { flex-wrap: nowrap; }
+      .nav-links { display: none; }
+      .nav-actions { gap: .65rem; }
+      .btn-nav { padding: .65rem 1rem; font-size: .86rem; white-space: nowrap; }
+      .nav-toggle { display: inline-flex; }
+    }
 
     /* Thank you page */
     .ty-hero { padding: clamp(4rem,8vw,6.5rem) 0 clamp(3rem,6vw,5rem); text-align: center; }
@@ -118,12 +150,27 @@
         <div class="logo-dot"></div>
         Match iNet
       </a>
-      <nav class="nav-links" aria-label="Primary navigation">
+      <div class="nav-actions">
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="/#services">Services</a>
+          <a href="/#roles">Open Roles</a>
+          <a href="/#testimonials">Stories</a>
+          <a href="/#contact">Apply</a>
+        </nav>
+        <a href="/#contact" class="btn-nav">Get Started</a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+    <div class="wrap">
+      <nav id="mobile-nav" class="nav-links-mobile" aria-label="Mobile navigation">
         <a href="/#services">Services</a>
         <a href="/#roles">Open Roles</a>
         <a href="/#testimonials">Stories</a>
         <a href="/#contact">Apply</a>
-        <a href="/#contact" class="btn-nav">Get Started</a>
       </nav>
     </div>
   </header>
@@ -209,12 +256,12 @@
         <div class="footer-links-col">
           <h4>Open positions</h4>
           <ul>
-            <li><a href="mailto:hr@matchinet.com?subject=Application — Junior Web Developer">Junior Web / App Developer</a></li>
-            <li><a href="mailto:hr@matchinet.com?subject=Application — Customer Support Specialist">Customer Support Specialist</a></li>
-            <li><a href="mailto:hr@matchinet.com?subject=Application — Social Media Assistant">Social Media &amp; Content Assistant</a></li>
-            <li><a href="mailto:hr@matchinet.com?subject=Application — HR Admin Coordinator">HR &amp; Admin Coordinator</a></li>
-            <li><a href="mailto:hr@matchinet.com?subject=Application — Project Admin Assistant">Project Admin &amp; Tracking Assistant</a></li>
-            <li><a href="mailto:hr@matchinet.com?subject=Application — Data Entry Assistant">Data Entry &amp; Reporting Assistant</a></li>
+            <li>Junior Web / App Developer</li>
+            <li>Customer Support Specialist</li>
+            <li>Social Media &amp; Content Assistant</li>
+            <li>HR &amp; Admin Coordinator</li>
+            <li>Project Admin &amp; Tracking Assistant</li>
+            <li>Data Entry &amp; Reporting Assistant</li>
           </ul>
         </div>
 
@@ -230,7 +277,7 @@
             <a href="tel:+6581308263">+65 8130 8263</a>
           </p>
           <p style="margin: .3rem 0 0;">
-            <a href="mailto:hr@matchinet.com">hr@matchinet.com</a>
+            hr@matchinet.com
           </p>
           <p style="margin: .3rem 0 0;">
             <a href="https://matchinet.com">matchinet.com</a>
@@ -248,6 +295,22 @@
     </div>
   </footer>
 
-  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+    const navToggle = document.querySelector(".nav-toggle");
+    const mobileNav = document.getElementById("mobile-nav");
+    if (navToggle && mobileNav) {
+      navToggle.addEventListener("click", () => {
+        const isOpen = mobileNav.classList.toggle("is-open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+      mobileNav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          mobileNav.classList.remove("is-open");
+          navToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+  </script>
 </body>
 </html>
